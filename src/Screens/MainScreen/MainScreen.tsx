@@ -1,12 +1,11 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { Pressable, View, Text, TextInput , StyleSheet} from 'react-native';
 import { Entry } from './components/Entry';
+import { useMainScreen } from './hooks/useMainScreen';
 
 export const MainScreen: React.FC = () => {
 
-
-  const [isPressed,setIsPressed] = useState(false); 
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  const {isPressed, setIsPressed, isPasswordHidden, toggleShowPassword} = useMainScreen();
     return(
         <View style={styles.container}>
 
@@ -26,7 +25,7 @@ export const MainScreen: React.FC = () => {
            </View>
            </Pressable>
   
-           <Pressable  onPress={() => {setIsPasswordHidden(!isPasswordHidden)}}>
+           <Pressable  onPress={toggleShowPassword}>
            <View 
            style={[styles.loginButton, 
                   isPressed?styles.loginButtonPressIn:styles.loginButtonDefault]}>
