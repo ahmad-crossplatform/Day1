@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { Pressable, View, Text, TextInput , StyleSheet} from 'react-native';
+import { Entry } from './components/Entry';
 
 export const MainScreen: React.FC = () => {
 
@@ -10,14 +11,11 @@ export const MainScreen: React.FC = () => {
         <View style={styles.container}>
 
         <View style={styles.usernamePasswordContainer}>
-          <View style={styles.usernameContainer}>
-            <Text style={styles.label}>Username</Text>
-            <TextInput style={styles.username}/>  
-          </View>
-          <View style={styles.passwordContainer}>
-            <Text style={styles.label}>Password</Text>
-            <TextInput style={styles.password} secureTextEntry={isPasswordHidden}/>  
-          </View>
+
+        <Entry label="Username" isPassword={false}/>
+
+        <Entry label="Password" isPassword={isPasswordHidden}/>
+       
         </View>
         <View style={styles.loginContainer}>
           <Pressable  onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}} onPress={() => {}}>
@@ -50,42 +48,8 @@ const styles = StyleSheet.create({
       backgroundColor:'green',
       justifyContent: 'center',
     },
-    usernameContainer:{
-      flex:1,
-      justifyContent:'center',
-      backgroundColor:'pink',
-      paddingHorizontal:20,
-      
-    },
-    passwordContainer:{
-      flex:1,
-      justifyContent:'center',
-      backgroundColor:'gray',
-      paddingHorizontal:20,
-    },
-    username:{
-  
-      backgroundColor:'white',
-      fontSize:25,
-      borderColor:'black',
-      borderWidth:2,
-      height:50,
-      borderRadius:15,
-  
-    },
-    password:{
-      backgroundColor:'white',
-      fontSize:25,
-      borderColor:'black',
-      borderWidth:2,
-      height:50,
-      borderRadius:15,
-    },
-    label:{
-      fontSize: 20,
-      fontWeight:'bold',
-      margin:5,
-    },
+
+
     loginContainer:{
       flex:1, 
       paddingHorizontal:25,
