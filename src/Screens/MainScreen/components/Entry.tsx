@@ -1,7 +1,6 @@
 import React from 'react' ; 
 import { View,Text,TextInput,StyleSheet } from 'react-native';
 
-
 interface IEntry {
     label: string, 
     isPassword: boolean
@@ -25,7 +24,6 @@ const styles = StyleSheet.create(
             
           },
           username:{
-  
             backgroundColor:'white',
             fontSize:25,
             borderColor:'black',
