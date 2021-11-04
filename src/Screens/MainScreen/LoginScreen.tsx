@@ -1,11 +1,12 @@
 import React from 'react';
 import { Pressable, View, Text, TextInput , StyleSheet} from 'react-native';
 import { Entry } from './components/Entry';
+import { MyButton } from './components/MyButton';
 import { useMainScreen } from './hooks/useMainScreen';
 
-export const MainScreen: React.FC = () => {
+export const LoginScreen: React.FC = () => {
 
-  const {isPressed, setIsPressed, isPasswordHidden, toggleShowPassword} = useMainScreen();
+  const {isPasswordHidden, toggleShowPassword} = useMainScreen();
     return(
         <View style={styles.container}>
 
@@ -17,21 +18,8 @@ export const MainScreen: React.FC = () => {
        
         </View>
         <View style={styles.loginContainer}>
-          <Pressable  onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}} onPress={() => {}}>
-           <View 
-           style={[styles.loginButton, 
-                  isPressed?styles.loginButtonPressIn:styles.loginButtonDefault]}>
-             <Text style={styles.loginButtonText}>Login</Text>
-           </View>
-           </Pressable>
-  
-           <Pressable  onPress={toggleShowPassword}>
-           <View 
-           style={[styles.loginButton, 
-                  isPressed?styles.loginButtonPressIn:styles.loginButtonDefault]}>
-             <Text style={styles.loginButtonText}>{isPasswordHidden?'Show':'Hide'} Password</Text>
-           </View>
-           </Pressable>
+         <MyButton label="Login" onPress={() => alert('login')}/>
+         <MyButton label="Show Password" onPress={toggleShowPassword}/>
         </View>
       </View>
     );
