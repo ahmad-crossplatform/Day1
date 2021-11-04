@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { DemoContext } from '../../../context/DemoContext';
 interface IMyButton {
     label: string, 
     onPress: () => void ; 
 }
 export const MyButton:React.FC<IMyButton> = (props) => {
-
+    const context =  React.useContext(DemoContext)
     const [isPressed, setIsPressed] = useState(false);
     return (
         <Pressable  onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}} onPress={props.onPress}>

@@ -6,9 +6,10 @@ import { useMainScreen } from './hooks/useMainScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {MaterialIcons} from '@expo/vector-icons'
 import Logo from '../../../assets/gaming.svg'; 
+import { DemoContext } from '../../context/DemoContext';
 
 export const LoginScreen: React.FC =  () => {
-  
+  const context  = React.useContext(DemoContext);
   const [password, setPassword] = React.useState("")
   const {isPasswordHidden, toggleShowPassword} = useMainScreen();
   const savePassword = async () => await AsyncStorage.setItem("password", password)
@@ -29,8 +30,8 @@ export const LoginScreen: React.FC =  () => {
 <ScrollView>
   <Logo width={200} height={200}/>
         <View style={styles.usernamePasswordContainer}>
-
-        <Entry label="Username" isPassword={false}/>
+          <Text style={{fontSize:30 , color: 'yellow'}}>{context?.simpleText?? "EMPTY"}</Text>
+        <Entry label="Username" isPassword={false}  OnTextChanged={(text)=> context?.setSimpleText(text)}/>
 
         <Entry label="Password" defaultValue={password} isPassword={isPasswordHidden} OnTextChanged={(text)=> setPassword(text)}/>
         </View>
