@@ -1,10 +1,10 @@
 import React from 'react';
-import {  View,  StyleSheet, ActivityIndicator, Text} from 'react-native';
+import {  View,  StyleSheet, ActivityIndicator, Text, SafeAreaView, ScrollView} from 'react-native';
 import { Entry } from './components/Entry';
 import { MyButton } from './components/MyButton';
 import { useMainScreen } from './hooks/useMainScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import {MaterialIcons} from '@expo/vector-icons'
 
 
 export const LoginScreen: React.FC =  () => {
@@ -25,8 +25,8 @@ export const LoginScreen: React.FC =  () => {
     init();
   }, [])
     return(
-        <View style={styles.container}>
-
+        <SafeAreaView style={styles.container}>
+<ScrollView>
         <View style={styles.usernamePasswordContainer}>
 
         <Entry label="Username" isPassword={false}/>
@@ -34,6 +34,7 @@ export const LoginScreen: React.FC =  () => {
         <Entry label="Password" defaultValue={password} isPassword={isPasswordHidden} OnTextChanged={(text)=> setPassword(text)}/>
         </View>
         <View style={styles.loginContainer}>
+          <MaterialIcons name="accessibility-new" size={50} color="red"/>
         <ActivityIndicator  animating style={{width: 150, height:150}} />
          <MyButton label="Login" onPress={async () => {
            await savePassword(); 
@@ -44,7 +45,8 @@ export const LoginScreen: React.FC =  () => {
          }}/>
          <MyButton label="Show Password" onPress={toggleShowPassword}/>
         </View>
-      </View>
+        </ScrollView>
+      </SafeAreaView>
     );
 } 
 
