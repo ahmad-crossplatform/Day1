@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { MainScreen } from './src/Screens/MainScreen/MainScreen';
+import { LoginScreen } from './src/Screens/MainScreen/LoginScreen';
 
- const  App= () =>   <MainScreen/>
+ const  App= () =>   <LoginScreen/>
 export default App
