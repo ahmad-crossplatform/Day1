@@ -8,7 +8,7 @@ import {MaterialIcons} from '@expo/vector-icons'
 import Logo from '../../../assets/gaming.svg'; 
 import { DemoContext } from '../../context/DemoContext';
 
-export const LoginScreen: React.FC =  () => {
+export const LoginScreen: React.FC =  (props:any) => {
   const context  = React.useContext(DemoContext);
   const [password, setPassword] = React.useState("")
   const {isPasswordHidden, toggleShowPassword} = useMainScreen();
@@ -42,7 +42,7 @@ export const LoginScreen: React.FC =  () => {
            await savePassword(); 
            const retrievedPassword = await getPassword(); 
            if(retrievedPassword){
-             alert(retrievedPassword);
+             props.navigation.navigate("HomeScreen")
            }
          }}/>
          <MyButton label="Show Password" onPress={toggleShowPassword}/>
