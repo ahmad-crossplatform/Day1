@@ -5,7 +5,7 @@ import { MyButton } from './components/MyButton';
 import { useMainScreen } from './hooks/useMainScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {MaterialIcons} from '@expo/vector-icons'
-
+import Logo from '../../../assets/gaming.svg'; 
 
 export const LoginScreen: React.FC =  () => {
   
@@ -27,6 +27,7 @@ export const LoginScreen: React.FC =  () => {
     return(
         <SafeAreaView style={styles.container}>
 <ScrollView>
+  <Logo width={200} height={200}/>
         <View style={styles.usernamePasswordContainer}>
 
         <Entry label="Username" isPassword={false}/>
