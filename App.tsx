@@ -4,7 +4,8 @@ import { LoginScreen } from './src/Screens/LoginScreen/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import {HomeScreen} from './src/Screens/HomeScreen/HomeScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-const Stack = createNativeStackNavigator() ;  
+import { StackScreens } from './src/helpers/types';
+const Stack = createNativeStackNavigator<StackScreens>() ;  
 const  App= () =>  
  <DemoContextProvider>
      <NavigationContainer>

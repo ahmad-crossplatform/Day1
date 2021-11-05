@@ -7,8 +7,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import {MaterialIcons} from '@expo/vector-icons'
 import Logo from '../../../assets/gaming.svg'; 
 import { DemoContext } from '../../context/DemoContext';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackScreens } from '../../helpers/types';
 
-export const LoginScreen: React.FC =  (props:any) => {
+interface ILoginScreen extends  NativeStackScreenProps<StackScreens,'LoginScreen'>   {
+
+}
+
+
+export const LoginScreen: React.FC<ILoginScreen> =  (props) => {
   const context  = React.useContext(DemoContext);
   const [password, setPassword] = React.useState("")
   const {isPasswordHidden, toggleShowPassword} = useMainScreen();
@@ -42,7 +49,7 @@ export const LoginScreen: React.FC =  (props:any) => {
            await savePassword(); 
            const retrievedPassword = await getPassword(); 
            if(retrievedPassword){
-             props.navigation.navigate("HomeScreen")
+             props.navigation.navigate('HomeScreen',{userId:13})
            }
          }}/>
          <MyButton label="Show Password" onPress={toggleShowPassword}/>
